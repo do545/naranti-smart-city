@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+
+    <!-- Logo Gradient -->
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F36F21" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+
+    <!-- Pulse Animation -->
+    <style>
+      .pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .dot {
+        animation: bounce 1.4s infinite ease-in-out both;
+      }
+      .dot:nth-child(1) { animation-delay: -0.32s; }
+      .dot:nth-child(2) { animation-delay: -0.16s; }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .5; }
+      }
+      @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+      }
+      .text-title {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        fill: #ffffff;
+      }
+      .text-subtitle {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        fill: #a1a1aa;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg)" />
+
+  <!-- Main Content Group -->
+  <g transform="translate(400, 260)">
+    
+    <!-- Naranti Logo / Brand Element -->
+    <g transform="translate(0, -100)" class="pulse">
+      <!-- Outer Ring -->
+      <circle cx="0" cy="0" r="40" fill="none" stroke="url(#logo-grad)" stroke-width="6" stroke-dasharray="60 40" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite" />
+      </circle>
+      <!-- Inner Elements -->
+      <circle cx="0" cy="0" r="25" fill="none" stroke="#F36F21" stroke-width="4" opacity="0.5" />
+      <path d="M -10 -10 L 10 10 M -10 10 L 10 -10" stroke="#F36F21" stroke-width="4" stroke-linecap="round" />
+    </g>
+
+    <!-- Texts -->
+    <text x="0" y="20" class="text-title" text-anchor="middle">NARANTI</text>
+    <text x="0" y="55" class="text-subtitle" text-anchor="middle">Esperando conexión...</text>
+
+    <!-- Loading Indicators -->
+    <g transform="translate(-25, 110)">
+      <circle class="dot" cx="0" cy="0" r="6" fill="#F36F21" />
+      <circle class="dot" cx="25" cy="0" r="6" fill="#F36F21" />
+      <circle class="dot" cx="50" cy="0" r="6" fill="#F36F21" />
+    </g>
+    
+  </g>
+</svg>

@@ -1,0 +1,170 @@
+rules_version = '2';
+
+// ============================================================================
+// Naranti Analytics Smart City — Reglas de Firestore
+// ----------------------------------------------------------------------------
+// Modelo de roles (colección `users`, doc id = email en minúsculas):
+//   - admin            -> Panel operativo. Naranti administra TODO de forma central.
+//   - kiosk  / screen  -> Dispositivos URBANOS (Naranti Smart City).
+//   - mall             -> Dispositivo de CENTRO COMERCIAL (nuevo modo). Reservado.
+//
+// Multi-tenant (a futuro): hoy la administración es central (un admin ve todo).
+// Cuando cada plaza tenga su propio administrador, busca los bloques marcados
+// con  [TENANT]  para activar el aislamiento por `plazaId` sin rehacer todo.
+// ============================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─────────────────────────── Helpers ───────────────────────────
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email != null;
+    }
+
+    // Doc id de usuarios y dispositivos = email en minúsculas (igual que la app).
+    function authEmail() {
+      return request.auth.token.email.lower();
+    }
+
+    function userDocPath() {
+      return /databases/$(database)/documents/users/$(authEmail());
+    }
+
+    function userExists() {
+      return isSignedIn() && exists(userDocPath());
+    }
+
+    function role() {
+      return get(userDocPath()).data.role;
+    }
+
+    function hasRole(r) {
+      return userExists() && role() == r;
+    }
+
+    function isAdmin() {
+      return hasRole('admin');
+    }
+
+    // Roles de dispositivo: urbano (kiosk/screen) + comercial (mall).
+    function isDeviceRole() {
+      return userExists() && role() in ['kiosk', 'screen', 'mall'];
+    }
+
+    // Cualquier cuenta válida del sistema.
+    function isKnownUser() {
+      return userExists() && role() in ['admin', 'kiosk', 'screen', 'mall'];
+    }
+
+    // La cuenta es dueña del documento {id} (su email == id del doc).
+    function isSelf(docId) {
+      return isSignedIn() && docId == authEmail();
+    }
+
+    // Campos que SOLO el admin envía hacia el dispositivo (comandos / brillo).
+    // Un dispositivo no puede escribírselos a sí mismo.
+    function touchesProtectedDeviceFields() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['lastCommand', 'brightnessSchedule', 'brightnessUpdatedAt']);
+    }
+
+    // ─────────────────────────── users ───────────────────────────
+    // Roles del sistema. SOLO el admin los administra.
+    // El primer admin se crea manualmente en la consola (no desde el cliente).
+    match /users/{userId} {
+      allow read: if isAdmin() || isSelf(userId);
+
+      allow create, delete: if isAdmin();
+
+      // Admin edita cualquier campo; el propio usuario solo su 'lastAccess'.
+      allow update: if isAdmin()
+        || (isSelf(userId)
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lastAccess']));
+    }
+
+    // ─────────────────────── kiosks (dispositivos) ───────────────────────
+    // Doc id = email del dispositivo. Incluye urbano (kiosk/screen) y comercial (mall).
+    // [TENANT] A futuro: añadir  && request.resource.data.plazaId == miPlaza()
+    //          en las lecturas/escrituras para que cada operador solo vea su plaza.
+    match /kiosks/{deviceId} {
+      // El admin ve toda la flota; un dispositivo solo se ve a sí mismo.
+      allow read: if isAdmin() || isSelf(deviceId);
+
+      // Admin registra dispositivos; el dispositivo puede crear su propio doc
+      // (primer heartbeat) si aún no existe.
+      allow create: if isAdmin() || (isSelf(deviceId) && isDeviceRole());
+
+      // El dispositivo actualiza su propio doc (heartbeat, captura, ubicación),
+      // pero NO puede tocar los campos de control que solo manda el admin.
+      allow update: if isAdmin()
+        || (isSelf(deviceId) && isDeviceRole() && !touchesProtectedDeviceFields());
+
+      allow delete: if isAdmin();
+    }
+
+    // ─────────────────────────── campaigns ───────────────────────────
+    // Cualquier dispositivo/admin autenticado LEE la pauta; solo el admin la edita.
+    // [TENANT] A futuro: filtrar lectura por plazaId para campañas de cada plaza.
+    match /campaigns/{campaignId} {
+      allow read: if isKnownUser();
+      allow write: if isAdmin();
+    }
+
+    // ─────────────────────────── settings ───────────────────────────
+    // Config visual/global (rotación, mantenimiento, emergencia, etc.).
+    match /settings/{docId} {
+      allow read: if isKnownUser();
+      allow write: if isAdmin();
+    }
+
+    // ─────────────────────────── analytics ───────────────────────────
+    // SOLO los dispositivos registran métricas (contactos/toques), y solo en
+    // los campos conocidos — una credencial filtrada no puede inyectar campos
+    // arbitrarios ni escribir otras colecciones. Solo el admin lee reportes.
+    match /analytics/{dayId} {
+      allow read: if isAdmin();
+      allow create: if isDeviceRole()
+        && request.resource.data.keys().hasOnly(['date', 'interactions', 'devices', 'taps', 'devicesTaps']);
+      allow update: if isDeviceRole()
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['date', 'interactions', 'devices', 'taps', 'devicesTaps']);
+      allow delete: if isAdmin();
+    }
+
+    // ─────────────────────────── jobs (empleos) ───────────────────────────
+    // Feed de vacantes reales por ciudad (doc id = ciudad normalizada).
+    // SOLO lo escribe el backend (Cloud Functions / Admin SDK, que ignora
+    // estas reglas); ningún cliente puede escribirlo.
+    match /jobs/{cityId} {
+      allow read: if isKnownUser();
+      allow write: if false;
+    }
+
+    // Vacantes locales curadas desde el panel (producto vendible a negocios).
+    match /jobs_local/{jobId} {
+      allow read: if isKnownUser();
+      allow write: if isAdmin();
+    }
+
+    // ─────────────────────────── news (noticias) ───────────────────────────
+    // Feed de noticias reales por ciudad (RSS de medios locales, parseado por
+    // el backend). SOLO lo escribe el backend; los clientes solo leen.
+    match /news/{cityId} {
+      allow read: if isKnownUser();
+      allow write: if false;
+    }
+
+    // ─────────────────── spotlight (UGC) — reservado a futuro ───────────────────
+    // Hoy está simulado en la UI. Cuando se implemente, el contenido entrará como
+    // 'pending' y solo el admin lo aprueba. Restringido por defecto.
+    match /spotlight/{postId} {
+      allow read: if isKnownUser();
+      allow write: if isAdmin();
+    }
+
+    // ─────────────────────── default: denegar todo ───────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

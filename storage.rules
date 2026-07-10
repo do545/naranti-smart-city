@@ -1,0 +1,72 @@
+rules_version = '2';
+
+// ============================================================================
+// Naranti Analytics Smart City — Reglas de Cloud Storage
+// ----------------------------------------------------------------------------
+// Los roles se leen desde Firestore (colección `users`, doc id = email lower).
+//   campaigns/   -> arte de campañas: lo sube el admin, lo leen los dispositivos.
+//   screenshots/ -> evidencia: la suben los dispositivos, la revisa el admin.
+//   spotlight/   -> reservado a futuro (UGC moderado).
+// ============================================================================
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ─────────────────────────── Helpers ───────────────────────────
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email != null;
+    }
+    function authEmail() {
+      return request.auth.token.email.lower();
+    }
+    function userDocPath() {
+      return /databases/(default)/documents/users/$(authEmail());
+    }
+    function userExists() {
+      return isSignedIn() && firestore.exists(userDocPath());
+    }
+    function role() {
+      return firestore.get(userDocPath()).data.role;
+    }
+    function isAdmin() {
+      return userExists() && role() == 'admin';
+    }
+    function isKnownUser() {
+      return userExists() && role() in ['admin', 'kiosk', 'screen', 'mall'];
+    }
+    function isDeviceRole() {
+      return userExists() && role() in ['kiosk', 'screen', 'mall'];
+    }
+
+    // Arte de campañas (imágenes y videos). Lo sube el admin.
+    match /campaigns/{fileName} {
+      allow read: if isKnownUser();
+      allow write: if isAdmin()
+        && request.resource.size < 300 * 1024 * 1024  // tope 300 MB (videos)
+        && request.resource.contentType.matches('image/.*|video/.*');
+    }
+
+    // Capturas de evidencia que generan los dispositivos.
+    // El nombre del archivo DEBE empezar con el email del propio dispositivo
+    // (formato `email_timestamp.jpg`): un dispositivo no puede pisar la
+    // evidencia de otro.
+    match /screenshots/{fileName} {
+      allow read: if isAdmin();
+      allow write: if isDeviceRole()
+        && fileName.matches(authEmail() + '_.*')
+        && request.resource.size < 10 * 1024 * 1024   // tope 10 MB
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Reservado a futuro: subidas de Spotlight (urbano / centro comercial).
+    match /spotlight/{fileName} {
+      allow read: if isKnownUser();
+      allow write: if isAdmin();
+    }
+
+    // Default: denegar todo lo demás.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

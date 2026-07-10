@@ -1,0 +1,65 @@
+{
+  "name": "Naranti Smart City",
+  "short_name": "Naranti",
+  "description": "Kiosko interactivo Naranti Smart City",
+  "start_url": "/smartcity/display",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#F36F21",
+  "scope": "/",
+  "categories": ["productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Modo Kiosko",
+      "short_name": "Kiosko",
+      "url": "/smartcity/display",
+      "description": "Abrir el kiosko interactivo"
+    },
+    {
+      "name": "Modo Pantalla",
+      "short_name": "Pantalla",
+      "url": "/smartcity/screen",
+      "description": "Abrir reproductor de pantalla"
+    },
+    {
+      "name": "Panel Admin",
+      "short_name": "Admin",
+      "url": "/smartcity/admin",
+      "description": "Abrir administración"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

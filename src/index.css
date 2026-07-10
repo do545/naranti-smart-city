@@ -1,0 +1,316 @@
+@import "leaflet/dist/leaflet.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Day Theme (Light) */
+  --background-start: hsl(0, 0%, 100%); /* White */
+  --background-mid: hsl(30, 100%, 95%); /* Light Orange */
+  --background-end: hsl(220, 25%, 97%); /* Soft Gray */
+  --foreground: 240 10% 11.8%; /* #1E1E1E */
+  --muted-foreground: 240 3.8% 46.1%; /* #4B4B4B */
+
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 11.8%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 11.8%;
+
+  --primary: 22 100% 50%; /* Naranti Orange #FF6600 */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 240 5.9% 10%;
+
+  --border: 0 0% 90.6%; /* #E7E7E7 */
+  --input: 0 0% 90.6%;
+  --ring: 22 100% 50%;
+  
+  --radius: 1.5rem; /* 24px */
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(231, 231, 231, 0.8);
+  
+  --shadow-color: 220 15% 50%;
+
+  --naranti-orange: #FF6600;
+  --emergency-start: #FF4C4C;
+  --emergency-end: #FF3B30;
+  
+  --icon-restaurantes: #F6A019;
+  --icon-turismo: #25B7D3;
+  --icon-salud: #2ECC71;
+  --icon-transporte: #3A78FF;
+  --icon-cultura: #8A62FF;
+  --icon-mascotas: #FF7AA2;
+  --icon-noticias: #FF416C;
+  --icon-fitness: #FFC837;
+  --icon-servicios: #4A90E2;
+  --icon-trabajo: #50E3C2;
+
+  /* New colors for login page */
+  --login-title-day: #FF7F32;
+  --login-text-day: #2D2D2D;
+  --login-placeholder-day: #8A8A8A;
+}
+
+.dark {
+  --background-start: hsl(240, 10%, 8%); /* Dark Gray */
+  --background-mid: hsl(22, 100%, 25%); /* Tenuous Orange */
+  --background-end: hsl(0, 0%, 4%); /* Elegant Black */
+  --foreground: 0 0% 98%;
+  --muted-foreground: 0 0% 80%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --border: 240 3.7% 17.9%;
+  --input: 240 3.7% 15.9%;
+  
+  --glass-bg: rgba(28, 28, 32, 0.65);
+  --glass-border: rgba(50, 50, 55, 0.8);
+  
+  --shadow-color: 240 10% 2%;
+
+  /* New colors for login page in dark mode */
+  --login-title-night: #FF7F32; /* Same as day for consistency with Naranti brand */
+  --login-text-night: #F2F2F2;
+  --login-placeholder-night: #8A8A8A; /* Same as day for consistency */
+}
+
+/* Ocultar scrollbars globalmente — kiosco interactivo no debe mostrarlos */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: var(--background-end);
+  color: hsl(var(--foreground));
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+}
+
+@layer components {
+  .glass-chip {
+    @apply rounded-full border shadow-lg transition-all duration-300;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 12px hsla(var(--shadow-color), 0.08);
+  }
+  .glass-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px hsla(var(--shadow-color), 0.12);
+    border-color: hsl(var(--primary) / 0.5);
+  }
+  
+  .glass-card {
+    @apply rounded-[var(--radius)] border shadow-xl transition-all duration-300;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px hsla(var(--shadow-color), 0.1);
+  }
+  .glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px hsla(var(--shadow-color), 0.15);
+    border-color: hsl(var(--primary) / 0.6);
+  }
+}
+
+.gradient-text-brand {
+  color: hsl(var(--primary));
+}
+
+.emergency-chip {
+  @apply rounded-full border text-white font-bold shadow-lg transition-all duration-300 cursor-pointer;
+  background: linear-gradient(45deg, var(--emergency-start), var(--emergency-end));
+  border-color: rgba(255, 255, 255, 0.2);
+  animation: emergency-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes emergency-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsla(0, 100%, 65%, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px 5px hsla(0, 100%, 65%, 0.2);
+  }
+}
+
+/* leaflet overrides */
+.leaflet-container {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: hsl(var(--popover-foreground));
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px hsla(var(--shadow-color), 0.1);
+  border: 1px solid var(--glass-border);
+  padding: 1px;
+}
+
+.leaflet-popup-content {
+  margin: 1rem !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: none;
+}
+
+.leaflet-control-attribution a {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.leaflet-control-attribution {
+  background: hsla(var(--background-start), 0.7) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 0.5rem;
+  padding: 2px 6px !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-color: var(--glass-border) !important;
+  color: hsl(var(--foreground)) !important;
+  transition: all 0.2s ease !important;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+/* New Animated Gradient Background */
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dynamic-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: linear-gradient(
+    270deg,
+    var(--background-start),
+    var(--background-mid),
+    var(--background-end)
+  );
+  background-size: 400% 400%;
+  transition: background 0.5s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dynamic-bg {
+    animation: gradient-animation 25s ease infinite;
+  }
+}
+
+/* Hide old aurora shapes */
+.aurora-shape {
+  display: none;
+}
+
+.glow-soft {
+  filter: blur(6px);
+}
+
+/* =========================================================
+   KIOSK BREAKPOINT OVERRIDE
+   El build de Horizons no genera las media queries de altura
+   de Tailwind. Las declaramos explícitamente para que el
+   tótem físico (altura > 1000 px) use siempre 3 columnas
+   en el grid de servicios y la altura correcta del banner.
+   ========================================================= */
+@media (min-height: 1000px) {
+  .kiosk\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .kiosk\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .kiosk\:h-\[460px\] {
+    height: 460px;
+  }
+  .kiosk\:my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .kiosk\:p-8 {
+    padding: 2rem;
+  }
+}
+/* 🔒 Modo tótem (rol kiosk/screen): sin selección de texto, sin callout de
+   long-press en touch y sin arrastre de imágenes. Se activa vía AuthContext. */
+.kiosk-lock,
+.kiosk-lock * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.kiosk-lock img {
+  -webkit-user-drag: none;
+}
+
+/* 🧼 Modo tótem: sin barras de desplazamiento visibles (el scroll táctil
+   sigue funcionando). Aplica a la página y a cualquier lista interna.
+   El panel admin no lleva .kiosk-lock, así que conserva sus scrollbars. */
+.kiosk-lock,
+.kiosk-lock * {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE/Edge legacy */
+}
+
+.kiosk-lock::-webkit-scrollbar,
+.kiosk-lock *::-webkit-scrollbar {
+  display: none;              /* Chrome / Edge / Safari (los tótems) */
+  width: 0;
+  height: 0;
+}

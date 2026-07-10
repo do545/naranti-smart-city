@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hostinger Horizons" />
+    <meta name="description" content="Naranti Smart City — Plataforma de innovación urbana con integración inteligente de IA, datos y servicios digitales." />
+    <meta name="theme-color" content="#F36F21" />
+
+    <title>Naranti Smart City</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- 🧠 Fuente y estilo base -->
+    <style>
+        html,
+        body,
+        #root {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #F36F21;
+            color: #1a1a1a;
+            font-family: "Poppins", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+    </style>
+
+    <!-- 🔹 Preconexión a Google Maps para carga más rápida -->
+    <link rel="preconnect" href="https://maps.googleapis.com" />
+    <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+    <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- 📷 html2canvas para capturas de pantalla remotas (Fase 3) -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- 🔧 Aplicación principal -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ✅ Carga optimizada de Google Maps API (la clave se inyecta desde VITE_GOOGLE_MAPS_API_KEY) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=%VITE_GOOGLE_MAPS_API_KEY%&libraries=places"
+        async defer></script>
+</body>
+
+</html>
