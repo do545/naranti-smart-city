@@ -1,0 +1,182 @@
+[
+  {
+    "name": "sin desplazamiento horizontal/vertical",
+    "pass": true,
+    "info": "{\"sw\":1080,\"cw\":1080,\"sh\":1920,\"ch\":1920}"
+  },
+  {
+    "name": "lienzo ocupa la pantalla",
+    "pass": true,
+    "info": "{\"w\":1080,\"h\":1920}"
+  },
+  {
+    "name": "ningún elemento fuera de pantalla",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "zonas táctiles ≥ 120 px",
+    "pass": true,
+    "info": "[{\"cls\":\"nav-card nav-card--cartelera\",\"w\":478,\"h\":330,\"top\":792,\"bottom\":1122},{\"cls\":\"nav-card nav-card--sedes\",\"w\":478,\"h\":330,\"top\":792,\"bottom\":1122},{\"cls\":\"nav-card nav-card--secciones\",\"w\":658,\"h\":276,\"top\":1142,\"bottom\":1418},{\"cls\":\"official__button official__button--cinepolis\",\"w\":478,\"h\":124,\"top\":1474,\"bottom\":1598},{\"cls\":\"official__button official__button--ficm\",\"w\":478,\"h\":124,\"top\":1474,\"bottom\":1598}]"
+  },
+  {
+    "name": "window.ORION.status()",
+    "pass": true,
+    "info": "{\"app\":\"orion-ficm-2026\",\"version\":\"1.0.0\",\"view\":\"home\",\"online\":true,\"enabled\":true,\"withinSchedule\":true,\"startedAt\":\"2026-10-10T15:36:30.825Z\",\"uptimeSeconds\":3,\"lastInteractionAt\":null,\"lastError\":null,\"viewport\":{\"width\":1080,\"height\":1920,\"scale\":1}}"
+  },
+  {
+    "name": "abre cartelera",
+    "pass": true,
+    "info": "cartelera"
+  },
+  {
+    "name": "regresa desde cartelera",
+    "pass": true,
+    "info": "home"
+  },
+  {
+    "name": "abre sedes",
+    "pass": true,
+    "info": "sedes"
+  },
+  {
+    "name": "regresa desde sedes",
+    "pass": true,
+    "info": "home"
+  },
+  {
+    "name": "abre secciones",
+    "pass": true,
+    "info": "secciones"
+  },
+  {
+    "name": "regresa desde secciones",
+    "pass": true,
+    "info": "home"
+  },
+  {
+    "name": "abre cinepolis",
+    "pass": true,
+    "info": "cinepolis"
+  },
+  {
+    "name": "regresa desde cinepolis",
+    "pass": true,
+    "info": "home"
+  },
+  {
+    "name": "abre ficm",
+    "pass": true,
+    "info": "ficm"
+  },
+  {
+    "name": "regresa desde ficm",
+    "pass": true,
+    "info": "home"
+  },
+  {
+    "name": "botón Inicio (cristal)",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "atrás del navegador vuelve al inicio sin salir",
+    "pass": true,
+    "info": "{\"view\":\"home\",\"href\":\"http://127.0.0.1:4173/\"}"
+  },
+  {
+    "name": "aviso \"¿Sigues ahí?\" aparece",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "vuelve al inicio por inactividad",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "\"Continuar\" mantiene la vista",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "banner sin conexión",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "estado online=false",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "banner desaparece al volver la red",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "modo QR muestra código",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "comando setEnabled(false)",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "fuera de fechas",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "pantalla de recuperación ante error",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "error registrado en el log",
+    "pass": true,
+    "info": "1"
+  },
+  {
+    "name": "resolución 900×1600 sin cortes",
+    "pass": true,
+    "info": "{\"sw\":900,\"cw\":900,\"outside\":0}"
+  },
+  {
+    "name": "resolución 1080×1600 sin cortes",
+    "pass": true,
+    "info": "{\"sw\":1080,\"cw\":1080,\"outside\":0}"
+  },
+  {
+    "name": "resolución 2160×3840 sin cortes",
+    "pass": true,
+    "info": "{\"sw\":2160,\"cw\":2160,\"outside\":0}"
+  },
+  {
+    "name": "resolución 768×1366 sin cortes",
+    "pass": true,
+    "info": "{\"sw\":768,\"cw\":768,\"outside\":0}"
+  },
+  {
+    "name": "resolución 1200×1920 sin cortes",
+    "pass": true,
+    "info": "{\"sw\":1200,\"cw\":1200,\"outside\":0}"
+  },
+  {
+    "name": "resolución 1366×768 sin cortes",
+    "pass": true,
+    "info": "{\"sw\":1366,\"cw\":1366,\"outside\":0}"
+  },
+  {
+    "name": "cero peticiones externas",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "sin errores en consola (excepto el simulado)",
+    "pass": true,
+    "info": ""
+  }
+]

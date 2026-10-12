@@ -1,0 +1,504 @@
+/* ORION · FICM 2026 — Pantalla principal
+   Medidas en px del lienzo de 1080 × 1920. Los espaciadores flexibles
+   absorben la diferencia cuando la pantalla real es más alta o más baja. */
+
+.home,
+.status-screen {
+  display: flex;
+  justify-content: center;
+}
+
+.home__column {
+  position: relative;
+  width: 1080px;
+  height: 100%;
+  flex: none;
+}
+
+.home__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--gutter);
+}
+
+/* Espaciadores (suman 1920 px con el contenido). */
+.flex-spacer--top { flex: 70 1 70px; min-height: 28px; }
+.flex-spacer--header { flex: 60 1 60px; min-height: 24px; }
+.flex-spacer--welcome { flex: 40 1 40px; min-height: 22px; }
+.flex-spacer--cards { flex: 52 1 52px; min-height: 22px; }
+.flex-spacer--links { flex: 47 1 47px; min-height: 18px; }
+.flex-spacer--bottom { flex: 120 1 120px; min-height: 36px; }
+
+/* ---------- Decoración ---------- */
+
+.decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.decor > img,
+.decor > .header-art {
+  position: absolute;
+  pointer-events: none;
+}
+
+.decor__header {
+  left: 454px;
+  top: -18px;
+}
+
+.decor__corner--left {
+  left: 0;
+  bottom: 0;
+  width: 452px;
+  height: 315px;
+}
+
+.decor__corner--right {
+  right: 0;
+  bottom: 0;
+  width: 402px;
+  height: 401px;
+}
+
+/* ---------- Encabezado ---------- */
+
+.festival-header {
+  flex: none;
+  width: 400px;
+}
+
+.festival-header__logo {
+  width: 400px;
+  height: auto;
+}
+
+.festival-header__rule {
+  margin-top: 24px;
+  width: 392px;
+  height: 2px;
+  background: rgba(17, 17, 17, 0.55);
+}
+
+.festival-header__dates {
+  margin-top: 22px;
+  font: 500 15.5px/1 var(--font-sans);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #3a3733;
+}
+
+/* ---------- Mensaje principal ---------- */
+
+.welcome {
+  position: relative;
+  flex: none;
+}
+
+/* Arte del encabezado: en 1080 × 1920 ocupa x 454–1080, y −18–822. */
+.welcome__art {
+  position: absolute;
+  z-index: -1;
+  left: 402px;
+  top: -449px;
+  pointer-events: none;
+}
+
+.welcome__art--static,
+.decor__header {
+  width: 626px;
+  height: 840px;
+}
+
+/* ---------- Arte animado: rollo que gira y palomas en vuelo ---------- */
+
+.header-art {
+  overflow: visible;
+}
+
+.header-art img {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.header-art__base,
+.header-art__front {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header-art__reel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+}
+
+.header-art__reel-face {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  animation: orion-reel-spin 26s linear infinite;
+  will-change: transform;
+}
+
+@keyframes orion-reel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header-art__bird {
+  position: absolute;
+  animation: orion-bird-flight var(--dur) ease-in-out var(--delay) infinite alternate;
+  will-change: transform;
+}
+
+.header-art__bird img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 55%;
+  animation: orion-bird-flap var(--flap) ease-in-out infinite alternate;
+}
+
+@keyframes orion-bird-flight {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  35% {
+    transform: translate(calc(var(--dx) * 0.6), calc(var(--dy) * 0.3)) rotate(-4deg);
+  }
+  70% {
+    transform: translate(calc(var(--dx) * 0.4), var(--dy)) rotate(3deg);
+  }
+  100% {
+    transform: translate(var(--dx), calc(var(--dy) * 0.75)) rotate(-2deg);
+  }
+}
+
+/* Aleteo: las alas se pliegan y se abren (silueta comprimida en vertical). */
+@keyframes orion-bird-flap {
+  from {
+    transform: scaleY(1) translateY(0);
+  }
+  to {
+    transform: scaleY(0.58) translateY(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-art__reel-face,
+  .header-art__bird,
+  .header-art__bird img {
+    animation: none;
+  }
+}
+
+.is-low-power .header-art__reel-face,
+.is-low-power .header-art__bird,
+.is-low-power .header-art__bird img {
+  animation: none;
+}
+
+.welcome__title {
+  font: 900 96px/0.98 var(--font-display);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+.welcome__accent {
+  margin-top: 26px;
+  width: 92px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--red);
+  transform-origin: left center;
+}
+
+.welcome__subtitle {
+  margin-top: 28px;
+  font: 500 20px/1.65 var(--font-sans);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #1d1c1a;
+}
+
+/* ---------- Tarjetas principales ---------- */
+
+.nav-cards {
+  flex: 0 1 440px;
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+}
+
+.nav-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: #0b0b0b;
+  text-align: left;
+  color: #fff;
+  box-shadow: 0 22px 44px -22px rgba(17, 17, 17, 0.55), 0 2px 6px rgba(17, 17, 17, 0.12);
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+.nav-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.nav-card__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 26%, rgba(0, 0, 0, 0.38) 56%, rgba(0, 0, 0, 0.84) 100%);
+}
+
+.nav-card__press {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.nav-card:active .nav-card__press {
+  opacity: 1;
+  transition-duration: 0.05s;
+}
+
+.nav-card:active .nav-card__photo {
+  transform: scale(1.04);
+}
+
+.nav-card__icon {
+  position: absolute;
+  left: 40px;
+  bottom: 132px;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+}
+
+.nav-card__title {
+  position: absolute;
+  left: 38px;
+  bottom: 34px;
+  font: 800 64px/1 var(--font-display);
+  letter-spacing: -0.008em;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+.nav-card__arrow {
+  position: absolute;
+  right: 34px;
+  bottom: 30px;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  color: #fff;
+  transition: transform 0.35s var(--ease-spring), background-color 0.25s ease;
+}
+
+.nav-card:active .nav-card__arrow {
+  transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------- Accesos oficiales ---------- */
+
+.official {
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.official__button {
+  position: relative;
+  height: 136px;
+  border-radius: var(--radius-button);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px 0 38px;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.official__button--cinepolis {
+  background: linear-gradient(180deg, #1a1a1a 0%, #070707 100%);
+  color: #fff;
+  box-shadow: 0 22px 40px -22px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.official__button--ficm {
+  background: var(--ivory-card);
+  color: var(--ink);
+  border: 1.5px solid rgba(17, 17, 17, 0.16);
+  box-shadow: 0 20px 36px -24px rgba(17, 17, 17, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  padding-left: 30px;
+}
+
+.official__button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.official__button--ficm::after {
+  background: rgba(17, 17, 17, 0.05);
+}
+
+.official__button:active::after {
+  opacity: 1;
+  transition-duration: 0.05s;
+}
+
+.official__ficm-logo {
+  height: 108px;
+  width: auto;
+}
+
+.official__arrow {
+  flex: none;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.official__arrow--light {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #fff;
+}
+
+.official__arrow--dark {
+  border: 2px solid var(--ink);
+  color: var(--ink);
+}
+
+.official__button:active .official__arrow {
+  transform: translateX(6px);
+}
+
+.cinepolis-logo {
+  height: 60px;
+  width: auto;
+  max-width: 300px;
+  object-fit: contain;
+}
+
+.cinepolis-logo--large {
+  height: 120px;
+  max-width: 640px;
+}
+
+.cinepolis-pending {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 18px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+}
+
+.cinepolis-pending__name {
+  font: 600 34px/1 var(--font-sans);
+  letter-spacing: 0.01em;
+}
+
+.cinepolis-pending__note {
+  font: 500 12px/1 var(--font-sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.cinepolis-pending--large {
+  padding: 22px 36px;
+  gap: 12px;
+  align-items: center;
+}
+
+.cinepolis-pending--large .cinepolis-pending__name {
+  font-size: 72px;
+}
+
+.cinepolis-pending--large .cinepolis-pending__note {
+  font-size: 16px;
+}
+
+/* ---------- Firma Naranti ---------- */
+
+.naranti {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naranti__label {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font: 500 16px/1 var(--font-sans);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #2d2b28;
+  white-space: nowrap;
+}
+
+.naranti__rule {
+  width: 130px;
+  height: 1.5px;
+  background: rgba(17, 17, 17, 0.6);
+}
+
+.naranti__logo {
+  margin-top: 26px;
+  width: 362px;
+  height: auto;
+}
+
+.naranti--compact .naranti__label {
+  font-size: 13px;
+  gap: 18px;
+}
+
+.naranti--compact .naranti__rule {
+  width: 90px;
+}
+
+.naranti--compact .naranti__logo {
+  margin-top: 16px;
+  width: 230px;
+}

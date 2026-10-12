@@ -1,0 +1,195 @@
+/* ORION · FICM 2026 — Base y lienzo del kiosco */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--ivory);
+}
+
+body {
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Kiosco: sin selección, sin resaltado de toque, sin rebote ni zoom. */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+img {
+  display: block;
+  max-width: none;
+  -webkit-user-drag: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 4px solid var(--red);
+  outline-offset: 6px;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+/* ---------- Lienzo ---------- */
+
+.stage-viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--ivory);
+  background-image: url('../assets/art/paper-tile.webp');
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  overflow: hidden;
+  background-color: var(--ivory);
+  background-image: url('../assets/art/paper-tile.webp');
+  background-size: 256px 256px;
+  contain: layout paint;
+}
+
+/* Simulación de otra pantalla desde el panel de pruebas */
+.stage-viewport--simulated {
+  display: grid;
+  place-items: center;
+  background: #2a2826;
+}
+
+.stage-frame {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #000, 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.stage-frame::after {
+  content: attr(data-label);
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font: 600 12px/1 var(--font-sans);
+  color: #f5f1e8;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.stage-frame .stage {
+  position: absolute;
+}
+
+/* ---------- Capas ---------- */
+
+.orion {
+  position: fixed;
+  inset: 0;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background-color: var(--ivory);
+  background-image: url('../assets/art/paper-tile.webp');
+  background-size: 256px 256px;
+  will-change: transform, opacity;
+}
+
+/* ---------- Liquid Glass (discreto) ---------- */
+
+.glass {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+}
+
+.glass-dark {
+  background: var(--glass-bg-dark);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(250, 247, 240, 0.94);
+  }
+  .glass-dark {
+    background: rgba(17, 17, 17, 0.88);
+  }
+}
+
+.is-low-power .glass,
+.is-low-power .glass-dark {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.is-low-power .glass {
+  background: rgba(250, 247, 240, 0.95);
+}
+
+.is-low-power .glass-dark {
+  background: rgba(17, 17, 17, 0.88);
+}
+
+/* ---------- Herramienta de revisión: zonas táctiles ---------- */
+
+.show-touch [data-touch] {
+  outline: 3px dashed #00a3ff !important;
+  outline-offset: 2px;
+}
+
+.flex-spacer {
+  display: block;
+  flex-shrink: 1;
+}

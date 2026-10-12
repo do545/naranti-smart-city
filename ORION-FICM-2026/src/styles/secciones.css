@@ -1,0 +1,359 @@
+/* ORION · FICM 2026 — Secciones de la selección oficial */
+
+.secciones__hero {
+  position: absolute;
+  z-index: 1;
+  top: 28px;
+  left: 28px;
+  right: 28px;
+  height: 360px;
+  border-radius: 44px;
+  overflow: hidden;
+  background: #0b0b0b;
+  box-shadow: 0 34px 70px -40px rgba(17, 17, 17, 0.7);
+  transform: translateZ(0);
+}
+
+.secciones__hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 40%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.secciones__hero-icon {
+  position: absolute;
+  left: 56px;
+  bottom: 44px;
+  color: #fff;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+
+/* Zona central: encabezado fijo + lista desplazable, entre la imagen y el pie. */
+.secciones__main {
+  position: absolute;
+  z-index: 2;
+  top: 420px;
+  left: 0;
+  right: 0;
+  bottom: 330px;
+}
+
+.secciones__level {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.secciones__head {
+  flex: none;
+  padding: 0 64px 22px;
+}
+
+.secciones__title {
+  margin-top: 14px;
+  font: 900 100px/0.98 var(--font-display);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.secciones__title--section {
+  font-size: 72px;
+  line-height: 1.02;
+}
+
+.secciones__meta,
+.secciones__description {
+  margin-top: 16px;
+  font: 500 24px/1.45 var(--font-sans);
+  color: var(--ink-soft);
+}
+
+.secciones__description {
+  max-width: 900px;
+}
+
+.secciones__empty {
+  margin: 0 64px;
+}
+
+/* Lista desplazable con el dedo; se difumina arriba y abajo. */
+.secciones__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: 18px 64px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22px, #000 calc(100% - 46px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 22px, #000 calc(100% - 46px), transparent 100%);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 17, 17, 0.35) transparent;
+}
+
+.secciones__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.secciones__scroll::-webkit-scrollbar-thumb {
+  background: rgba(17, 17, 17, 0.3);
+  border-radius: 3px;
+}
+
+/* ---------- Fila de sección ---------- */
+
+.seccion-row {
+  flex: none;
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 28px 24px 36px;
+  border-radius: 28px;
+  background: var(--ivory-card);
+  border: 1.5px solid rgba(17, 17, 17, 0.12);
+  box-shadow: 0 18px 34px -28px rgba(17, 17, 17, 0.55), inset 0 1px 0 #fff;
+  text-align: left;
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.seccion-row::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(208, 130, 105, 0.1);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.seccion-row:active::after {
+  opacity: 1;
+  transition-duration: 0.05s;
+}
+
+.seccion-row__text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seccion-row__name {
+  font: 800 40px/1.1 var(--font-display);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.seccion-row__count {
+  font: 600 16px/1 var(--font-sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.seccion-row__groups {
+  color: var(--ink-muted);
+}
+
+.seccion-row__arrow {
+  flex: none;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.seccion-row:active .seccion-row__groups {
+  color: var(--ink-muted);
+}
+
+.seccion-row__arrow {
+  transform: translateX(6px);
+}
+
+/* ---------- Subgrupos (Documental / Ficción…) ---------- */
+
+.secciones__chips {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.secciones__chip {
+  height: 72px;
+  padding: 0 18px 0 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: 600 22px/1 var(--font-sans);
+  letter-spacing: 0.04em;
+}
+
+.secciones__chip-count {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.film-block {
+  flex: none;
+}
+
+.film-group {
+  margin: 26px 0 4px;
+  padding-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font: 600 18px/1 var(--font-sans);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  border-bottom: 2px solid var(--red);
+}
+
+.film-block:first-child .film-group {
+  margin-top: 4px;
+}
+
+/* ---------- Película ---------- */
+
+.film-row {
+  padding: 26px 0 28px;
+  border-bottom: 1.5px solid rgba(17, 17, 17, 0.12);
+}
+
+.film-block:first-child .film-row {
+  padding-top: 6px;
+}
+
+.film-group + .film-row {
+  padding-top: 20px;
+}
+
+.film-row__format {
+  display: inline-block;
+  margin-bottom: 10px;
+  font: 600 14px/1 var(--font-sans);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.film-row__title {
+  font: 800 38px/1.12 var(--font-display);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.film-row__director {
+  margin-top: 10px;
+  font: 600 23px/1.35 var(--font-sans);
+  color: var(--ink-soft);
+}
+
+.film-row__meta,
+.film-row__note {
+  margin-top: 6px;
+  font: 500 21px/1.4 var(--font-sans);
+  color: var(--ink-muted);
+}
+
+/* ---------- Sedes ---------- */
+
+.sedes__city {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sedes__city + .sedes__city {
+  margin-top: 14px;
+}
+
+.sedes__city .film-group {
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.sedes__city-count {
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+}
+
+.sede-card {
+  flex: none;
+  min-height: 118px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 20px 30px 20px 22px;
+  border-radius: 28px;
+  background: var(--ivory-card);
+  border: 1.5px solid rgba(17, 17, 17, 0.12);
+  box-shadow: 0 18px 34px -28px rgba(17, 17, 17, 0.55), inset 0 1px 0 #fff;
+}
+
+.sede-card__mark {
+  flex: none;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+}
+
+.sede-card__photo {
+  flex: none;
+  width: 168px;
+  height: 120px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.sede-card__text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sede-card__name {
+  font: 800 36px/1.12 var(--font-display);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.sede-card__city {
+  font: 600 16px/1 var(--font-sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}

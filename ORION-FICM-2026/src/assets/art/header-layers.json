@@ -1,0 +1,58 @@
+{
+  "_nota": "Generado por design/tools/extract_assets.py. Coordenadas en px del arte del encabezado.",
+  "art": {
+    "width": 626,
+    "height": 840
+  },
+  "reel": {
+    "size": 480,
+    "matrix": [
+      0.124794483,
+      -0.508940368,
+      0.0,
+      -0.000997514,
+      0.22183639,
+      0.847317876,
+      0.0,
+      0.000563422,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      141.496540326,
+      277.987442884,
+      0.0,
+      1.0
+    ]
+  },
+  "birds": [
+    {
+      "file": "bird-1.webp",
+      "left": 68.25,
+      "top": 259.35,
+      "width": 33.6,
+      "height": 36.75
+    },
+    {
+      "file": "bird-2.webp",
+      "left": 113.4,
+      "top": 266.7,
+      "width": 35.7,
+      "height": 36.75
+    },
+    {
+      "file": "bird-3.webp",
+      "left": 93.45,
+      "top": 307.65,
+      "width": 34.65,
+      "height": 34.65
+    },
+    {
+      "file": "bird-4.webp",
+      "left": 65.1,
+      "top": 348.6,
+      "width": 34.65,
+      "height": 35.7
+    }
+  ]
+}

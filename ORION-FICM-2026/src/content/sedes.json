@@ -1,0 +1,13 @@
+{
+  "_instrucciones": "Sedes oficiales del 24.º FICM, en el orden en que deben mostrarse. Para añadir una foto real de una sede, guardarla en src/assets/sedes/ con el valor de 'foto' como nombre (por ejemplo teatro-melchor-ocampo.webp) y recompilar. No usar imágenes inventadas.",
+  "fuente": "Información proporcionada por Naranti (2026-10-12)",
+  "sedes": [
+    { "nombre": "Cinépolis Morelia Centro", "ciudad": "Morelia", "foto": "cinepolis-morelia-centro" },
+    { "nombre": "Cinépolis VIP Plaza Las Américas", "ciudad": "Morelia", "foto": "cinepolis-vip-plaza-las-americas" },
+    { "nombre": "Teatro Mariano Matamoros", "ciudad": "Morelia", "foto": "teatro-mariano-matamoros" },
+    { "nombre": "Teatro Melchor Ocampo", "ciudad": "Morelia", "foto": "teatro-melchor-ocampo" },
+    { "nombre": "Museo Regional de Michoacán “Dr. Nicolás León Calderón”", "ciudad": "Morelia", "foto": "museo-regional-de-michoacan" },
+    { "nombre": "Centro Cultural Clavijero", "ciudad": "Morelia", "foto": "centro-cultural-clavijero" },
+    { "nombre": "Teatro Emperador Caltzontzin", "ciudad": "Pátzcuaro", "foto": "teatro-emperador-caltzontzin" }
+  ]
+}

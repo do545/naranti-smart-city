@@ -1,0 +1,475 @@
+{
+  "_instrucciones": "Selección oficial de la 24.ª edición del FICM por sección. Copiar EXACTAMENTE lo publicado en la fuente oficial; no inventar títulos ni datos. Cada sección lleva 'peliculas' o 'grupos' (p. ej. Documental / Ficción), cada uno con sus 'peliculas'. Solo 'titulo' es obligatorio.",
+  "fuente": "https://moreliafilmfest.com/el-ficm-da-conocer-la-seleccion-oficial-de-su-24a-edicion",
+  "consultado": "2026-10-12",
+  "nota": "Transcrito del texto de la selección oficial proporcionado por Naranti. El bloque «Funciones Especiales Internacionales: Documental / Ficción» venía repetido, idéntico a «Estrenos Internacionales»; se incluyó una sola vez, pendiente de confirmar.",
+  "secciones": [
+    {
+      "nombre": "Largometraje Mexicano",
+      "peliculas": [
+        {
+          "titulo": "6 meses en el edificio rosa con azul",
+          "direccion": "Bruno Santamaría Razo"
+        },
+        {
+          "titulo": "La cazadora",
+          "direccion": "Suzanne Andrews Correa"
+        },
+        {
+          "titulo": "Ceniza en la boca",
+          "direccion": "Diego Luna"
+        },
+        {
+          "titulo": "Chicas tristes",
+          "direccion": "Fernanda Tovar"
+        },
+        {
+          "titulo": "Contra la naturaleza",
+          "direccion": "Axel Bertha"
+        },
+        {
+          "titulo": "Lo demás es ruido",
+          "direccion": "Nicolás Pereda"
+        },
+        {
+          "titulo": "Los días de Poncho",
+          "direccion": "Faustino Alanís"
+        },
+        {
+          "titulo": "El jardín que soñamos",
+          "direccion": "Joaquín del Paso"
+        },
+        {
+          "titulo": "Los nuevos",
+          "direccion": "Rodrigo Plá"
+        },
+        {
+          "titulo": "Nosotros",
+          "direccion": "Joaquín Ruano"
+        },
+        {
+          "titulo": "Salón de belleza",
+          "direccion": "Nathalia Acevedo"
+        },
+        {
+          "titulo": "Toda una vida",
+          "direccion": "Ariel Gutiérrez"
+        }
+      ]
+    },
+    {
+      "nombre": "Estrenos Mexicanos",
+      "grupos": [
+        {
+          "nombre": "Documental",
+          "peliculas": [
+            {
+              "titulo": "Anti Princesas",
+              "direccion": "Alejandro de Icaza"
+            },
+            {
+              "titulo": "Marcos. Otro mundo es posible",
+              "direccion": "Diego Enrique Osorno"
+            },
+            {
+              "titulo": "La mirada de Frida",
+              "direccion": "Trisha Ziff"
+            }
+          ]
+        },
+        {
+          "nombre": "Ficción",
+          "peliculas": [
+            {
+              "titulo": "Atrápelo quien pueda",
+              "direccion": "Alfonso Pineda"
+            },
+            {
+              "titulo": "Cosme",
+              "direccion": "Álvaro Curiel"
+            },
+            {
+              "titulo": "Jardines del bosque",
+              "direccion": "Alex y Diego Barragán"
+            },
+            {
+              "titulo": "La peluca",
+              "direccion": "Emiliano Rocha Minter"
+            },
+            {
+              "titulo": "Petardos & Magnolias",
+              "direccion": "Sandra Concepción Reynoso Estrada"
+            },
+            {
+              "titulo": "Versalles",
+              "direccion": "Andrés Clariond"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Funciones Nacionales Especiales",
+      "peliculas": [
+        {
+          "titulo": "Ancestras. Parte dos | Permanencia: Marcelina Mendoza Castro",
+          "direccion": "Canal 22"
+        },
+        {
+          "titulo": "Avándaro 71: la visión de los vecinos",
+          "direccion": "Camila Mendoza, Gustavo Marcovich"
+        },
+        {
+          "titulo": "Sahara F.C.: la vida en chorcitos",
+          "direccion": "Camila Mendoza, Gustavo Marcovich"
+        },
+        {
+          "titulo": "Cómo fui a enamorarme de ti (1990)",
+          "direccion": "Sergio Olhovich"
+        },
+        {
+          "titulo": "Mujer santuario (Sanctuary Woman)",
+          "direccion": "Alan Domínguez"
+        },
+        {
+          "titulo": "Un afortunado testigo (el detrás de cámaras de Amores perros)",
+          "direccion": "Fernando Llanos"
+        }
+      ]
+    },
+    {
+      "nombre": "Estrenos Internacionales",
+      "grupos": [
+        {
+          "nombre": "Documental",
+          "peliculas": [
+            {
+              "titulo": "Aanikoobijigan [ancestor / great-grandparent / great-grandchild]",
+              "direccion": "Adam Khalil, Zack Khalil"
+            },
+            {
+              "titulo": "Adolfo Domínguez. El eco de otras voces",
+              "direccion": "Adriana Domínguez"
+            },
+            {
+              "titulo": "American Doctor",
+              "direccion": "Poh Si Teng"
+            },
+            {
+              "titulo": "Birds of War",
+              "direccion": "Janay Boulos, Abd Alkader Habak"
+            },
+            {
+              "titulo": "Burgundy",
+              "direccion": "Michael Dweck, Gregory Kershaw"
+            },
+            {
+              "titulo": "To Hold a Mountain",
+              "direccion": "Biljana Tutorov, Petar Glomazić"
+            },
+            {
+              "titulo": "Joy of Joys",
+              "direccion": "Jonathan Glazer"
+            },
+            {
+              "titulo": "The Lion Queen",
+              "direccion": "Ben Fries, Alden Nusser"
+            },
+            {
+              "titulo": "Los Lobos: Native Sons",
+              "direccion": "Douglas Blush, Piero F. Giunti"
+            },
+            {
+              "titulo": "The Story of Documentary Film",
+              "direccion": "Mark Cousins"
+            },
+            {
+              "titulo": "Tina: art, amour et révolution",
+              "direccion": "Daniela Mujica"
+            }
+          ]
+        },
+        {
+          "nombre": "Ficción",
+          "peliculas": [
+            {
+              "titulo": "A Long Winter",
+              "direccion": "Andrew Haigh"
+            },
+            {
+              "titulo": "A Man of His Time (Notre salut)",
+              "direccion": "Emmanuel Marre"
+            },
+            {
+              "titulo": "Adolescencia sexo y muerte en el Campamento Miasma (Teenage Sex and Death at Camp Miasma)",
+              "direccion": "Jane Schoenbrun"
+            },
+            {
+              "titulo": "All of a Sudden",
+              "direccion": "Ryusuke Hamaguchi"
+            },
+            {
+              "titulo": "Amor es el monstruo",
+              "direccion": "Neto Villalobos"
+            },
+            {
+              "titulo": "Behemoth!",
+              "direccion": "Tony Gilroy"
+            },
+            {
+              "titulo": "Ben’imana",
+              "direccion": "Marie Clémentine Dusabejambo"
+            },
+            {
+              "titulo": "The Blood Countess (Die Blutgräfin)",
+              "direccion": "Ulrike Ottinger"
+            },
+            {
+              "titulo": "La bola negra",
+              "direccion": "Javier Calvo, Javier Ambrossi"
+            },
+            {
+              "titulo": "Borges and Me",
+              "direccion": "Marc Turtletaub"
+            },
+            {
+              "titulo": "Club Kid",
+              "direccion": "Jordan Firstman"
+            },
+            {
+              "titulo": "Cobarde (Coward)",
+              "direccion": "Lukas Dhont"
+            },
+            {
+              "titulo": "De Gaulle: Francia libre - Parte 1 La bataille De Gaulle: l’âge de fer",
+              "direccion": "Antonin Baudry"
+            },
+            {
+              "titulo": "De Gaulle: Francia libre - Parte 2 La bataille De Gaulle: j’écris ton nom",
+              "direccion": "Antonin Baudry"
+            },
+            {
+              "titulo": "The Debut",
+              "direccion": "Jesse Eisenberg"
+            },
+            {
+              "titulo": "El desconocido del gran arco (L’inconnu de la Grande Arche)",
+              "direccion": "Stéphane Demoustier"
+            },
+            {
+              "titulo": "El deshielo",
+              "direccion": "Manuela Martelli"
+            },
+            {
+              "titulo": "Después de Kim",
+              "direccion": "Ángeles González Sinde"
+            },
+            {
+              "titulo": "Día de caza",
+              "direccion": "Pedro Aguilera"
+            },
+            {
+              "titulo": "The Echo Chamber",
+              "direccion": "Andrea Pallaoro"
+            },
+            {
+              "titulo": "Elsinore",
+              "direccion": "Simon Stone"
+            },
+            {
+              "titulo": "Fiesta pägana",
+              "direccion": "Álvaro Brechner"
+            },
+            {
+              "titulo": "Fjord",
+              "direccion": "Cristian Mungiu"
+            },
+            {
+              "titulo": "Libre de corazón (Free at Heart)",
+              "direccion": "Max Hegewald"
+            },
+            {
+              "titulo": "Ha Chan, Shake Your Booty!",
+              "direccion": "Josef Kubota Wladyka"
+            },
+            {
+              "titulo": "I Play Rocky",
+              "direccion": "Peter Farrelly"
+            },
+            {
+              "titulo": "I See Buildings Fall Like Lightning",
+              "direccion": "Clio Barnard"
+            },
+            {
+              "titulo": "Ink",
+              "direccion": "Danny Boyle"
+            },
+            {
+              "titulo": "Iron Boy (Le corset)",
+              "direccion": "Louis Clichy"
+            },
+            {
+              "titulo": "Josephine",
+              "direccion": "Beth de Araújo"
+            },
+            {
+              "titulo": "Julián",
+              "direccion": "Louise Bagnall, Guillaume, Lorin Mark Mullery"
+            },
+            {
+              "titulo": "Killing Castro",
+              "direccion": "Eif Rivera"
+            },
+            {
+              "titulo": "Klara and the Sun",
+              "direccion": "Taika Waititi"
+            },
+            {
+              "titulo": "Look Back",
+              "direccion": "Hirokazu Kore-eda"
+            },
+            {
+              "titulo": "The Man I Love",
+              "direccion": "Ira Sachs"
+            },
+            {
+              "titulo": "Monstruo gentil (Gentle Monster)",
+              "direccion": "Marie Kreutzer"
+            },
+            {
+              "titulo": "The Moon is a Father of Mine",
+              "direccion": "George Ovashvili"
+            },
+            {
+              "titulo": "Pepita, la pistolera",
+              "direccion": "Lucía Puenzo"
+            },
+            {
+              "titulo": "El psicópata (Victorian Psycho)",
+              "direccion": "Zachary Wigon"
+            },
+            {
+              "titulo": "Ray Gunn",
+              "direccion": "Brad Bird"
+            },
+            {
+              "titulo": "Red Rocks (Les Roches Rouges)",
+              "direccion": "Bruno Dumont"
+            },
+            {
+              "titulo": "La reina en el mar (Queen at Sea)",
+              "direccion": "Lance Hammer"
+            },
+            {
+              "titulo": "Rose",
+              "direccion": "Markus Schleinzer"
+            },
+            {
+              "titulo": "The Roses of Marrakesh",
+              "direccion": "Ginevra Elkann"
+            },
+            {
+              "titulo": "Sanguine (Species)",
+              "direccion": "Marion Le Corroller"
+            },
+            {
+              "titulo": "El ser querido",
+              "direccion": "Rodrigo Sorogoyen"
+            },
+            {
+              "titulo": "Shana",
+              "direccion": "Lila Pinell"
+            },
+            {
+              "titulo": "Sheep in the Box",
+              "direccion": "Hirokazu Kore-eda"
+            },
+            {
+              "titulo": "Solidarity",
+              "direccion": "Dustin Brown"
+            },
+            {
+              "titulo": "The Sound of Flames",
+              "direccion": "Giuseppe Ferlito, Yiyun Ye"
+            },
+            {
+              "titulo": "Tierra de mi padre (Fatherland)",
+              "direccion": "Pawel Pawlikowski"
+            },
+            {
+              "titulo": "Tralovento",
+              "direccion": "Eloy Domínguez Serén"
+            },
+            {
+              "titulo": "Un amor posible (Possible Love)",
+              "direccion": "Lee Chang-dong"
+            },
+            {
+              "titulo": "La venganza del Charro Negro",
+              "direccion": "Marvick Eduardo Núñez Aguilera"
+            },
+            {
+              "titulo": "La Venus eléctrica (La Vénus électrique)",
+              "direccion": "Pierre Salvadori"
+            },
+            {
+              "titulo": "Visitation (Heimsuchung)",
+              "direccion": "Volker Schlöndorff"
+            },
+            {
+              "titulo": "Wild Horse Nine",
+              "direccion": "Martin McDonagh"
+            },
+            {
+              "titulo": "Wildwood",
+              "direccion": "Travis Knight"
+            },
+            {
+              "titulo": "Your Mother Your Mother Your Mother",
+              "direccion": "Bassam Tariq"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Funciones Especiales Internacionales",
+      "grupos": [
+        {
+          "nombre": "Cortometrajes",
+          "peliculas": [
+            {
+              "titulo": "Little Genes",
+              "direccion": "Amy Redford"
+            },
+            {
+              "titulo": "Para los contrincantes",
+              "direccion": "Federico Luis"
+            }
+          ]
+        },
+        {
+          "nombre": "Largometrajes",
+          "peliculas": [
+            {
+              "titulo": "Casablanca (1942)",
+              "direccion": "Michael Curtiz"
+            },
+            {
+              "titulo": "Touché (2023)",
+              "direccion": "Martina Moor"
+            },
+            {
+              "titulo": "The Call Room (2025)",
+              "direccion": "Vincenzo Carrano"
+            },
+            {
+              "titulo": "What Price Glory (1929)",
+              "direccion": "Raoul Walsh"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

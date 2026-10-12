@@ -1,0 +1,58 @@
+{
+  "_instrucciones": "Archivo editable de ORION · FICM 2026. Tras compilar se encuentra en dist/orion.config.json y puede modificarse sin recompilar. Las URLs en null se muestran como 'Enlace pendiente'. No inventar URLs: usar solo enlaces oficiales verificados.",
+
+  "links": {
+    "sedes": null,
+    "secciones": null,
+    "cinepolis": "https://cinepolis.com/mx",
+    "ficm": "https://moreliafilmfest.com/noticias"
+  },
+
+  "navigation": {
+    "mode": "iframe",
+    "iframeTimeoutSeconds": 10,
+    "iframeZoom": 1.25,
+    "overrides": {
+      "sedes": null,
+      "secciones": null,
+      "cinepolis": null,
+      "ficm": null
+    }
+  },
+
+  "idle": {
+    "enabled": true,
+    "timeoutSeconds": 60,
+    "warningSeconds": 10
+  },
+
+  "display": {
+    "width": 1080,
+    "height": 1920
+  },
+
+  "kiosk": {
+    "guards": true,
+    "requestFullscreenOnTouch": false,
+    "errorReloadSeconds": 8
+  },
+
+  "schedule": {
+    "enabled": false,
+    "start": "2026-10-16T00:00:00-06:00",
+    "end": "2026-10-25T23:59:59-06:00"
+  },
+
+  "experience": {
+    "enabled": true,
+    "animatedHeader": true
+  },
+
+  "performance": {
+    "lowPower": false
+  },
+
+  "debug": {
+    "panel": false
+  }
+}

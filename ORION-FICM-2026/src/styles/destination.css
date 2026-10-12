@@ -1,0 +1,442 @@
+/* ORION · FICM 2026 — Pantallas de destino y navegación del kiosco */
+
+.destination {
+  display: block;
+}
+
+.destination .decor {
+  z-index: 0;
+  opacity: 0.9;
+}
+
+/* ---------- Imagen principal ---------- */
+
+.destination__hero {
+  position: absolute;
+  z-index: 1;
+  top: 28px;
+  left: 28px;
+  right: 28px;
+  height: 760px;
+  border-radius: 44px;
+  overflow: hidden;
+  background: #0b0b0b;
+  box-shadow: 0 34px 70px -40px rgba(17, 17, 17, 0.7);
+  transform: translateZ(0);
+}
+
+.destination__hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.destination__hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 26%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.destination__hero-icon {
+  position: absolute;
+  left: 56px;
+  bottom: 52px;
+  color: #fff;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+
+.destination__hero--brand {
+  display: grid;
+  place-items: center;
+}
+
+.destination__hero--cinepolis {
+  background: radial-gradient(120% 90% at 50% 40%, #222 0%, #050505 70%);
+  color: #fff;
+}
+
+.destination__hero--ficm {
+  background: var(--ivory-card);
+  border: 1.5px solid rgba(17, 17, 17, 0.12);
+}
+
+.destination__hero-ficm {
+  width: 600px;
+  height: auto;
+}
+
+.destination__glass-top {
+  position: absolute;
+  z-index: 5;
+  top: 60px;
+  left: 60px;
+  right: 60px;
+}
+
+/* ---------- Texto ---------- */
+
+.destination__body {
+  position: absolute;
+  z-index: 2;
+  top: 830px;
+  left: 64px;
+  right: 64px;
+}
+
+.destination__kicker {
+  font: 600 17px/1.3 var(--font-sans);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.destination__title {
+  margin-top: 18px;
+  font: 900 112px/0.98 var(--font-display);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+.destination__accent {
+  margin-top: 22px;
+  width: 92px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--red);
+}
+
+.destination__description {
+  margin-top: 24px;
+  font: 500 30px/1.4 var(--font-sans);
+  color: var(--ink-soft);
+}
+
+/* ---------- Paneles ---------- */
+
+.panel {
+  margin-top: 40px;
+  padding: 40px 44px;
+  border-radius: 36px;
+  background: rgba(250, 247, 240, 0.92);
+  border: 1.5px solid rgba(17, 17, 17, 0.1);
+  box-shadow: 0 26px 50px -36px rgba(17, 17, 17, 0.5), inset 0 1px 0 #fff;
+}
+
+.panel__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(208, 130, 105, 0.14);
+  color: var(--red);
+  font: 600 15px/1 var(--font-sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.panel__badge--muted {
+  background: rgba(17, 17, 17, 0.07);
+  color: var(--ink-soft);
+}
+
+.panel__lead {
+  margin-top: 22px;
+  font: 500 29px/1.42 var(--font-sans);
+  color: var(--ink);
+}
+
+.panel__rows {
+  margin-top: 28px;
+  display: grid;
+  gap: 20px;
+}
+
+.panel__rows dt {
+  font: 600 14px/1 var(--font-sans);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.panel__rows dd {
+  margin-top: 10px;
+  font: 500 25px/1.35 var(--font-sans);
+  color: var(--ink);
+}
+
+.panel__url {
+  font: 600 24px/1.35 var(--font-sans);
+  color: var(--red-deep);
+  word-break: break-all;
+}
+
+.panel--qr {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.panel--qr .qr {
+  flex: none;
+  padding: 14px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px -18px rgba(17, 17, 17, 0.5);
+}
+
+.panel--qr .panel__url {
+  margin-top: 18px;
+}
+
+/* ---------- Pie de destino ---------- */
+
+.destination__footer {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+
+/* ---------- Navegación del kiosco ---------- */
+
+.kiosk-nav--bar {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 20px;
+  padding: 0 64px;
+}
+
+.kiosk-nav__btn {
+  height: 128px;
+  border-radius: var(--radius-button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font: 600 32px/1 var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+.kiosk-nav__btn--back {
+  background: linear-gradient(180deg, #1c1c1c, #070707);
+  color: #fff;
+  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+.kiosk-nav__btn--home {
+  background: var(--ivory-card);
+  color: var(--ink);
+  border: 1.5px solid rgba(17, 17, 17, 0.18);
+  box-shadow: 0 20px 36px -26px rgba(17, 17, 17, 0.45);
+}
+
+.kiosk-nav--pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kiosk-nav__pill-btn {
+  height: 104px;
+  padding: 0 40px 0 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  font: 600 28px/1 var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+.kiosk-nav__pill-btn--icon {
+  width: 104px;
+  padding: 0;
+  justify-content: center;
+  color: var(--ink);
+}
+
+.kiosk-nav__title {
+  flex: 1;
+  text-align: center;
+  font: 800 38px/1 var(--font-display);
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Sitio integrado (modo iframe) ---------- */
+
+.embedded {
+  background: var(--ivory);
+}
+
+.embedded__bar {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 156px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--ivory);
+  border-bottom: 1.5px solid rgba(17, 17, 17, 0.12);
+  box-shadow: 0 12px 30px -24px rgba(17, 17, 17, 0.6);
+}
+
+.embedded--cinepolis .embedded__bar {
+  background: linear-gradient(180deg, #161616, #050505);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.embedded__back {
+  background: var(--ink);
+  color: #fff;
+}
+
+.embedded--cinepolis .embedded__back {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+}
+
+.embedded__brand {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.embedded__brand .cinepolis-logo {
+  height: 56px;
+}
+
+.embedded__ficm {
+  height: 104px;
+  width: auto;
+}
+
+.embedded__round {
+  flex: none;
+  width: 104px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ivory-card);
+  border: 1.5px solid rgba(17, 17, 17, 0.16);
+  color: var(--ink);
+}
+
+.embedded--cinepolis .embedded__round {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.embedded__viewport {
+  position: absolute;
+  top: 156px;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.embedded__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: #fff;
+  transform-origin: 0 0;
+  transition: opacity 0.4s ease;
+}
+
+.embedded__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 28px;
+  font: 500 28px/1.3 var(--font-sans);
+  color: var(--ink-soft);
+  background: var(--ivory);
+}
+
+.embedded__footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  background: var(--ivory);
+  border-top: 1.5px solid rgba(17, 17, 17, 0.1);
+}
+
+.overlay--qr {
+  background: rgba(17, 17, 17, 0.4);
+}
+
+.qr-card {
+  width: 760px;
+  padding: 60px 64px 56px;
+  border-radius: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.qr-card .qr {
+  padding: 18px;
+  background: #fff;
+  border-radius: 26px;
+}
+
+.qr-card__title {
+  margin-top: 34px;
+  font: 900 64px/1.05 var(--font-display);
+  color: var(--ink);
+}
+
+.qr-card__url {
+  margin-top: 14px;
+  font: 600 22px/1.3 var(--font-sans);
+  color: var(--red-deep);
+  word-break: break-all;
+}
+
+.reel-spinner {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 8px solid rgba(17, 17, 17, 0.12);
+  border-top-color: var(--red);
+  animation: orion-spin 1s linear infinite;
+}
+
+@keyframes orion-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

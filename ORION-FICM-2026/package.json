@@ -1,0 +1,31 @@
+{
+  "name": "orion-ficm-2026",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ORION · FICM 2026 — Interfaz de kiosco vertical de Naranti SmartCity para el 24.º Festival Internacional de Cine de Morelia.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "5.3.0",
+    "@fontsource/playfair-display": "5.3.0",
+    "motion": "12.43.0",
+    "qrcode-generator": "2.0.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "5.2.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

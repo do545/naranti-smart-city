@@ -1,0 +1,5 @@
+Fotos reales de las sedes (opcional).
+Nombre del archivo = valor de "foto" en src/content/sedes.json, por ejemplo:
+  teatro-melchor-ocampo.webp
+Formatos: .webp, .jpg, .png. Tamaño recomendado: 340 x 240 px o mayor.
+Solo fotografías reales con permiso de uso; no imágenes generadas.

@@ -1,0 +1,213 @@
+/* ORION · FICM 2026 — Avisos, pantallas de estado y panel de simulación */
+
+/* ---------- Inactividad ---------- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+}
+
+.overlay--idle {
+  background: rgba(17, 17, 17, 0.32);
+}
+
+.idle-card {
+  width: 780px;
+  padding: 70px 64px 60px;
+  border-radius: 52px;
+  text-align: center;
+}
+
+.idle-card__title {
+  font: 900 88px/1 var(--font-display);
+  color: var(--ink);
+}
+
+.idle-card__text {
+  margin-top: 24px;
+  font: 500 30px/1.4 var(--font-sans);
+  color: var(--ink-soft);
+}
+
+.idle-card__text strong {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.idle-card__button {
+  margin-top: 48px;
+  width: 100%;
+  height: 124px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #1c1c1c, #070707);
+  color: #fff;
+  font: 600 34px/1 var(--font-sans);
+  letter-spacing: 0.02em;
+  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Sin conexión ---------- */
+
+.offline-banner {
+  position: absolute;
+  z-index: 40;
+  top: 36px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 36px;
+  border-radius: 999px;
+  font: 600 22px/1.2 var(--font-sans);
+  color: var(--ink);
+}
+
+/* ---------- Pantalla de estado ---------- */
+
+.status-screen__content {
+  position: absolute;
+  z-index: 2;
+  left: 64px;
+  right: 64px;
+  top: 0;
+  bottom: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.status-screen__logo {
+  width: 420px;
+  height: auto;
+  margin-bottom: 120px;
+}
+
+.status-screen__title {
+  font: 900 112px/0.98 var(--font-display);
+  color: var(--ink);
+}
+
+.status-screen__message {
+  margin-top: 30px;
+  max-width: 560px;
+  font: 500 32px/1.45 var(--font-sans);
+  color: var(--ink-soft);
+}
+
+.status-screen__detail {
+  margin-top: 26px;
+  font: 600 20px/1 var(--font-sans);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.status-screen__footer {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 120px;
+}
+
+/* ---------- Panel de simulación (fuera del lienzo) ---------- */
+
+.debug-toggle {
+  position: fixed;
+  z-index: 1000;
+  left: 12px;
+  bottom: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.82);
+  color: #f5f1e8;
+  font: 600 12px/1 system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.debug-panel {
+  position: fixed;
+  z-index: 1000;
+  right: 12px;
+  top: 12px;
+  width: 340px;
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  padding: 14px 16px 18px;
+  border-radius: 14px;
+  background: rgba(24, 23, 22, 0.96);
+  color: #f5f1e8;
+  font: 13px/1.4 system-ui, sans-serif;
+  user-select: text;
+  -webkit-user-select: text;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.debug-panel header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.debug-panel h3 {
+  margin: 14px 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ef7c3d;
+}
+
+.debug-panel label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.debug-panel button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #3a3734;
+  color: #f5f1e8;
+  font-size: 12px;
+}
+
+.debug-panel button.is-active {
+  background: var(--red);
+}
+
+.debug-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.debug-note {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #c9c2b5;
+}
+
+.debug-panel pre {
+  margin-top: 8px;
+  max-height: 240px;
+  overflow: auto;
+  font-size: 11px;
+  background: #111;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-spinner {
+    animation-duration: 3s;
+  }
+}
